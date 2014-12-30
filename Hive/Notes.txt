@@ -1,0 +1,5 @@
+Query will insert the results directly into HDFS:
+=================================================
+INSERT OVERWRITE DIRECTORY '/path/to/output/dir' SELECT * FROM table WHERE id > 100;
+or
+$hive -e "SELECT * FROM table where id > 100" > ~/sample_output.txt
