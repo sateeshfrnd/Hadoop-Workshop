@@ -1,1 +1,9 @@
 hdfs fs -ls /
+
+Leave from SafeMode
+===================
+hadoop dfsadmin -safemode leave
+cloudera : 
+--------
+sudo -u hdfs hdfs dfsadmin -safemode leave
+
