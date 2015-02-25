@@ -10,10 +10,22 @@ hive> INSERT OVERWRITE LOCAL DIRECTORY '/path/to/output/dir' SELECT * FROM <tabl
 
 Running a Query from the command line
 =====================================
-$HIVE_HOME/bin/hive -e 'SELECT * FROM <table-name>';
+$hive -e 'SELECT * FROM <table-name>';
 
 While running query, setting hive configuration variables
 =========================================================
-$HIVE_HOME/bin/hive -e 'select * from <table-name>' -hiveconf hive.exec.scratchdir=/home/my/hive_scratch  -hiveconf mapred.reduce.tasks=32
+$hive -e 'select * from <table-name>' -hiveconf hive.exec.scratchdir=/home/my/hive_scratch  -hiveconf mapred.reduce.tasks=3
+
+Running an initialization script before entering interactive mode
+==================================================================
+hive -i /home/cloudera/workshop/hive-init.sql
+ 
+Running a Hive script file (non-interactively)
+==============================================
+$hive -f /home/cloudera/workshop/hive-script.sql
+
+By default logs will be logged to log file, if you want to emit logs to standered output or console
+===================================================================================================
+$hive -hiveconf hive.root.logger=INFO,console
 
 
