@@ -1,0 +1,3 @@
+VirtualBox: access Windows-host shared folders from Ubuntu-guest
+sudo mount -t vboxsf <windows-folder-name> <Linux-folder-name>
+sudo mount -t vboxsf share-vb /home/cloudera/windows-share
