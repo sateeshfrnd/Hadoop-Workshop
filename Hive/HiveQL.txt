@@ -1,0 +1,14 @@
+RENAME TABLE
+============
+ALTER TABLE log_message RENAME log_msg;
+
+Prevent the partition from being dropped and queried
+====================================================
+ALTER TABLE log_messages
+PARTITION(year = 2012, month = 1, day = 1) ENABLE NO_DROP;
+
+ALTER TABLE log_messages
+PARTITION(year = 2012, month = 1, day = 1) ENABLE OFFLINE;
+
+To reverse either operation, replace ENABLE with DISABLE. 
+These operations also can’t be used with nonpartitioned tables.
