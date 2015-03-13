@@ -1,1 +1,2 @@
 What protocol does cqlsh use to connect to a Cassandra node? - Thrift Protocal.
+From what context does the cqlsh SOURCE command interpret a file path? - Folder from which cqlsh is launched.
