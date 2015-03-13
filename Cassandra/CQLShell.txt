@@ -28,3 +28,7 @@ $CASSANDRA_HOME$ ccm node2 cqlsh
 CQL Commands
 ------------
 cqlsh> HELP;
+
+Load and Execute CQL file
+-------------------------
+cqlsh> SOURCE 'mydb.cql';
