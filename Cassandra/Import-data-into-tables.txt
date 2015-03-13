@@ -24,3 +24,7 @@ cqlsh:my-musicdb> COPY album (title, year,performer,genre,tracks)
   WITH HEADER = true; 
   
 cqlsh:my-musicdb> SELECT * FROM album LIMIT 1;
+
+=======================================================================================
+Note:  The sequence of column names should be the column sequence in the external file.
+=======================================================================================
