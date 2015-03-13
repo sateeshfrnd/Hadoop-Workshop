@@ -1,8 +1,23 @@
 Copying external data into tables
 =================================
+cassandra-workshop$ cat album.csv
+title	year	performer	genre	tracks
+Duos For Violin and Cello	2000	Nigel Kennedy	Classical	{1: 'Sonata for Violin and Cello - Allegro', 2: 'Sonata for Violin and Cello - Tres vif', 3: 'Sonata for Violin and Cello - Lent', 4: 'Sonata for Violin and Cello - Vif, avec entrain', 5: 'Passacaglia', 6: 'Duo for Violin and Cello Op. 7 - Allegro serioso, non troppo', 7: 'Duo for Violin and Cello Op. 7 - Adagio-Andante-Tempo I', 8: 'Duo for Violin and Cello Op. 7 - Maestoso e largamente, ma non troppo lento-Presto', 9: 'Two-Part Intervention No. 6 in E'}
+Golden Boy Elvis	1981	Elvis Presley	Rock	{1: 'She''s Not You', 2: 'Return To Sender', 3: 'Joshua Fit The Battle', 4: 'Don''t', 5: 'Tutti Frutti', 6: 'It''s Now Or Never', 7: 'Surrender', 8: 'Do The Clam', 9: 'Kiss Me Quick', 10: 'Such A Night', 11: 'Blueberry Hill', 12: 'Don''t Be Cruel', 13: 'Heartbreak Hotel', 14: 'Fun In Acapulco', 15: 'Hound Dog', 16: 'Wooden Heart'}
+Home	1995	Blessid Union of Souls	Rock	{1: 'I Believe', 2: 'Let Me Be The One', 3: 'All Along', 4: 'Oh Virginia', 5: 'Nora', 6: 'Would You Be There', 7: 'Home', 8: 'End Of The World', 9: 'Heaven', 10: 'Forever For Tonight', 11: 'Lucky To Be Here'}
+
 cassandra-workshop$ ccm node1 cqlsh
 cqlsh> USE my-musicdb;
-cqlsh:my-musicdb> DESCRIBE album; 
+cqlsh:my-musicdb> DESCRIBE album;
+CREATE TABLE album (
+  title VARCHAR,
+  year INT,
+  performer VARCHAR,
+  genre VARCHAR,
+  tracks MAP<INT,VARCHAR>,
+  PRIMARY KEY ((title, year))
+);
+
 
 cqlsh:my-musicdb> COPY album (title, year,performer,genre,tracks)
   FROM 'album.csv'
