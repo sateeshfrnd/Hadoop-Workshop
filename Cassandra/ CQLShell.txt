@@ -1,0 +1,30 @@
+ CQL Shell (cqlsh)
+ ==================
+ $CASSANDRA_HOME$ ccm –help
+
+Check cluster is running 
+------------------------
+$CASSANDRA_HOME$ ccm status
+node1: UP
+node2: UP
+node3: UP
+
+Get more information on node
+----------------------------
+$CASSANDRA_HOME$ ccm node1 show
+
+Launch CQL Shell
+----------------
+$CASSANDRA_HOME$ bin/cqlsh
+
+Exit from CQL Shell
+-------------------
+cqlsh> EXIT;
+
+Launch CQL Shell pointing to a particular Node
+----------------------------------------------
+$CASSANDRA_HOME$ ccm node2 cqlsh
+
+CQL Commands
+------------
+cqlsh> HELP;
