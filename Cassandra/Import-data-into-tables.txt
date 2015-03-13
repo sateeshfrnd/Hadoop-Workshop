@@ -1,0 +1,11 @@
+Copying external data into tables
+=================================
+cassandra-workshop$ ccm node1 cqlsh
+cqlsh> USE my-musicdb;
+cqlsh:my-musicdb> DESCRIBE album; 
+
+cqlsh:my-musicdb> COPY album (title, year,performer,genre,tracks)
+  FROM 'album.csv'
+  WITH HEADER = true; 
+  
+cqlsh:my-musicdb> SELECT * FROM album LIMIT 1;
