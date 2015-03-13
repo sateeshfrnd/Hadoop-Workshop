@@ -32,3 +32,36 @@ cqlsh> HELP;
 Load and Execute CQL file
 -------------------------
 cqlsh> SOURCE 'mydb.cql';
+
+Know where the cqlsh is currently connected
+-------------------------------------------
+cqlsh> SHOW HOST;
+
+Shows the Version and build details of the connected Cassandra instance
+------------------------------------------------------------------------
+cqlsh> SHOW VERSION;
+
+DESCRIBE Command
+================
+cqlsh> DESCRIBE KEYSPACES;
+- List out the names of all Keyspaces.
+
+cqlsh> DESCRIBE KEYSPACES <keyspace-name>;
+- Shows the declation and settings of every table in keyspaces.
+
+cqlsh> DESCRIBE TABLES;
+- Shows all the table names in every keyspaces.
+
+cqlsh> USE mydb;
+- Points to mydb keyspaces.
+
+cqlsh:mydb> DESCRIBE TABLES;
+- Shows all the table names in mydb keyspaces.
+
+cqlsh> DESCRIBE TABLE <table-name>;
+- Shows the declation and settings of table.
+
+
+
+
+
