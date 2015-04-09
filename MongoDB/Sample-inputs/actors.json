@@ -1,0 +1,7 @@
+{first: 'matthew', last: 'setter', dob: '21/04/1978', gender: 'm', age: 18, hair_colour: 'brown', occupation: 'developer', nationality: 'australian'}
+{first: 'james', last: 'caan', dob:'26/03/1940', gender: 'm', age: 45, hair_colour: 'brown', occupation: 'actor', nationality: 'american'}
+{first: 'arnold', last: 'schwarzenegger', dob: '03/06/1925', gender: 'm', age: 65, hair_colour: 'brown', occupation: 'actor', nationality: 'american'}
+{first: 'tony', last:'curtis', dob: '21/04/1978', gender: 'm', age: 43, hair_colour: 'brown', occupation: 'developer', nationality: 'american'}
+{first: 'jamie lee', last: 'curtis', dob: '22/11/1958', gender: 'f', age: 22, hair_colour: 'brown', occupation: 'actor', nationality: 'american'}
+{first: 'michael', last: 'caine', dob: '14/03/1933', gender: 'm', age: 45, hair_colour: 'brown', occupation: 'actor', nationality: 'english'}
+{first: 'judi', last: 'dench', dob: '09/12/1934', gender: 'f', age: 33, hair_colour: 'white', occupation: 'actress', nationality: 'english'}
