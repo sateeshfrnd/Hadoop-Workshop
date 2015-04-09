@@ -1,0 +1,33 @@
+D:\MongoDB\WORKSHOP\mongodb\bin>mongoimport.exe -d mydb -c actors6 < D:\MongoDB\
+actors.json
+connected to: 127.0.0.1
+2015-04-09T14:47:41.639+0530 imported 7 objects
+
+> db.actors6.find().count()
+7
+
+> var map = function() {
+... emit({gender:this.gender},{count:1});
+... }
+>
+
+> var reduce = function(key, values){
+... var result = {count:0};
+... values.forEach(function(value){result.count+=value.count;});
+... return result;
+... }
+>
+
+> var result = db.actors6.mapReduce(map,reduce, {out:'gender'});
+>
+> show collections
+actors6
+gender
+system.indexes
+table1
+zipcode
+
+> db.gender.find();
+{ "_id" : { "gender" : "f" }, "value" : { "count" : 2 } }
+{ "_id" : { "gender" : "m" }, "value" : { "count" : 5 } }
+>
