@@ -1,0 +1,71 @@
+
+Basic syntax of remove() method is as follows
+---------------------------------------------
+>db.COLLECTION_NAME.remove(DELLETION_CRITTERIA)
+
+Remove all the documents whose x is '10'
+---------------------------------------
+> db.removeDemo.remove({x:10})
+	
+	
+Call the remove() method with parameter justOne : (Optional) if set to true or 1, then remove only one document.
+---------------------------------------------------------------------------------------------------------------------------------------------
+> db.removeDemo.find().pretty()
+{ "_id" : ObjectId("55260320ac5cdad75f6071d6"), "x" : 10, "y" : 45 }
+{ "_id" : ObjectId("55260326ac5cdad75f6071d7"), "x" : 10, "y" : 55 }
+{ "_id" : ObjectId("5526032cac5cdad75f6071d8"), "x" : 13, "y" : 5 }
+{ "_id" : ObjectId("55260336ac5cdad75f6071d9"), "x" : 15, "y" : 45 }
+>
+>
+> db.removeDemo.remove({x:10},{justOne:1})
+WriteResult({ "nRemoved" : 1 })
+>
+> db.removeDemo.find().pretty()
+{ "_id" : ObjectId("55260326ac5cdad75f6071d7"), "x" : 10, "y" : 55 }
+{ "_id" : ObjectId("5526032cac5cdad75f6071d8"), "x" : 13, "y" : 5 }
+{ "_id" : ObjectId("55260336ac5cdad75f6071d9"), "x" : 15, "y" : 45 }
+>
+
+db.inventory.remove({}) - Like 'Truncate in RDBMS', remove only data
+--------------------------------------------------------------------
+> db.removeDemo.find().pretty()
+{ "_id" : ObjectId("55260326ac5cdad75f6071d7"), "x" : 10, "y" : 55 }
+{ "_id" : ObjectId("5526032cac5cdad75f6071d8"), "x" : 13, "y" : 5 }
+{ "_id" : ObjectId("55260336ac5cdad75f6071d9"), "x" : 15, "y" : 45 }
+>
+>
+> db.removeDemo.remove({})
+WriteResult({ "nRemoved" : 3 })
+>
+> db.removeDemo.find().pretty()
+> show tables
+arrayDemo
+arrayDemo2
+memos
+mytable
+names
+numbers
+randomNumber
+randomNumbers
+randomlist
+removeDemo
+system.indexes
+updateDemo
+updateDemo2
+>
+
+db.inventory.drop() - Removes the tables
+-----------------------------------------
+> show tables
+arrayDemo2
+removeDemo
+system.indexes
+updateDemo2
+> db.removeDemo.drop()
+true
+>
+> show tables
+arrayDemo2
+system.indexes
+updateDemo2
+>
