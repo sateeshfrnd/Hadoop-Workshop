@@ -1,0 +1,82 @@
+MongoDB - Update Document
+=========================
+> db.numbers.find()
+{ "_id" : ObjectId("5524f278d0efa6d9641cbc0b"), "x" : 1, "y" : 13 }
+{ "_id" : ObjectId("5524f278d0efa6d9641cbc0c"), "x" : 2, "y" : 44 }
+{ "_id" : ObjectId("5524f278d0efa6d9641cbc0d"), "x" : 3, "y" : 70 }
+{ "_id" : ObjectId("5524f278d0efa6d9641cbc0e"), "x" : 4, "y" : 100 }
+{ "_id" : ObjectId("5524f278d0efa6d9641cbc0f"), "x" : 5, "y" : 30 }
+{ "_id" : ObjectId("5524f278d0efa6d9641cbc10"), "x" : 6, "y" : 59 }
+{ "_id" : ObjectId("5524f278d0efa6d9641cbc11"), "x" : 7, "y" : 70 }
+{ "_id" : ObjectId("5524f278d0efa6d9641cbc12"), "x" : 8, "y" : 60 }
+{ "_id" : ObjectId("5524f278d0efa6d9641cbc13"), "x" : 9, "y" : 26 }
+{ "_id" : ObjectId("5524f278d0efa6d9641cbc14"), "x" : 10, "y" : 16 }
+{ "_id" : ObjectId("55250b70d0efa6d9641cbc21"), "x" : 1, "y" : 46 }
+{ "_id" : ObjectId("55250b70d0efa6d9641cbc22"), "x" : 2, "y" : 13 }
+{ "_id" : ObjectId("55250b70d0efa6d9641cbc23"), "x" : 3, "y" : 62 }
+{ "_id" : ObjectId("55250b70d0efa6d9641cbc24"), "x" : 4, "y" : 20 }
+{ "_id" : ObjectId("55250b70d0efa6d9641cbc25"), "x" : 5, "y" : 59 }
+{ "_id" : ObjectId("55250b70d0efa6d9641cbc26"), "x" : 6, "y" : 17 }
+{ "_id" : ObjectId("55250b70d0efa6d9641cbc27"), "x" : 7, "y" : 96 }
+{ "_id" : ObjectId("55250b70d0efa6d9641cbc28"), "x" : 8, "y" : 82 }
+{ "_id" : ObjectId("55250b70d0efa6d9641cbc29"), "x" : 9, "y" : 53 }
+{ "_id" : ObjectId("55250b70d0efa6d9641cbc2a"), "x" : 10, "y" : 82 }
+Type "it" for more
+>
+>
+> db.numbers.find({x:10},{_id:0,x:1, y:1})
+{ "x" : 10, "y" : 16 }
+{ "x" : 10, "y" : 82 }
+>
+>
+Increment the Value
+--------------------
+> db.numbers.update({x:10},{$inc: {y:10}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+>
+> db.numbers.find({x:10},{_id:0,x:1, y:1})
+{ "x" : 10, "y" : 26 }
+{ "x" : 10, "y" : 82 }
+>
+>
+
+Decrement the Value
+--------------------
+> db.numbers.update({x:10},{$inc: {y:-5}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+>
+> db.numbers.find({x:10},{_id:0,x:1, y:1})
+{ "x" : 10, "y" : 21 }
+{ "x" : 10, "y" : 82 }
+>
+Update Schema using '$unset'
+----------------------------
+> db.updateDemo2.insert({x:1, y:100})
+WriteResult({ "nInserted" : 1 })
+>
+> db.updateDemo2.find().pretty()
+{ "_id" : ObjectId("5525f8deac5cdad75f6071d5"), "x" : 1, "y" : 100 }
+>
+> db.updateDemo2.update({x:1},{x:1,y:100, z:1000})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+> db.updateDemo2.find().pretty()
+{
+        "_id" : ObjectId("5525f8deac5cdad75f6071d5"),
+        "x" : 1,
+        "y" : 100,
+        "z" : 1000
+}
+
+> db.updateDemo2.update({x:1},{$unset: {y:""}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+> db.updateDemo2.find().pretty()
+{ "_id" : ObjectId("5525f8deac5cdad75f6071d5"), "x" : 1, "z" : 1000 }
+>
+
+
+
+
