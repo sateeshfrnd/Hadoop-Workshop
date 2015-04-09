@@ -1,0 +1,119 @@
+$ operator with Arrays
+-----------------------
+> db.arrayDemo2.insert({_id:1,a:[1,2,3,4,5]})
+WriteResult({ "nInserted" : 1 })
+>
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 1, 2, 3, 4, 5 ] }
+>
+>
+$push
+-----
+> db.arrayDemo2.update({_id:1},{$push: {a:50}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+>
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 1, 2, 3, 4, 5, 50 ] }
+>
+
+$pop
+-----
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 1, 2, 3, 4, 5, 50 ] }
+>
+> db.arrayDemo2.update({_id:1},{$pop: {a:1}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 1, 2, 3, 4, 5 ] }
+>
+>
+> db.arrayDemo2.update({_id:1},{$pop: {a:-1}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 3, 4, 5 ] }
+>
+
+$pushAll
+--------
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 3, 4, 5 ] }
+>
+> db.arrayDemo2.update({_id:1},{$pushAll : {a: [6,7,8]}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 3, 4, 5, 6, 7, 8 ] }
+>
+
+$pull - Remove a particular element from an array
+-------------------------------------------------
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 3, 4, 5, 6, 7, 8 ] }
+>
+1) Remove element '5' from array
+> db.arrayDemo2.update({_id:1},{$pull : {a: 5}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 3, 4, 6, 7, 8 ] }
+>
+
+2) Remove elements greaterthen 5
+> db.arrayDemo2.update({_id:1},{$pull : {a: {$gt:5}}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 3, 4 ] }
+>
+
+$pullAll - Remove particular elements
+-------------------------------------
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 3, 4, 6, 7, 8 ] }
+>
+>
+> db.arrayDemo2.update({_id:1},{$pullAll : {a: [3,6]}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+>
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 4, 7, 8 ] }
+>
+
+$addToSet - Add element only if not present
+-------------------------------------------
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 4, 7, 8 ] }
+>
+>
+> db.arrayDemo2.update({_id:1},{$push : {a: 4}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 4, 7, 8, 4 ] }
+>
+> db.arrayDemo2.update({_id:1},{$addToSet : {a: 4}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 0 })
+>
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 4, 7, 8, 4 ] }
+>
+>
+> db.arrayDemo2.update({_id:1},{$addToSet : {a: [5,2,8]}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 4, 7, 8, 4, [ 5, 2, 8 ] ] }
+>
+> db.arrayDemo2.update({_id:1},{$pop : {a: [5,2,8]}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+> db.arrayDemo2.find().pretty();
+{ "_id" : 1, "a" : [ 2, 4, 7, 8, 4 ] }
+>
+Note : Always add one element otherwise it will add sub array.
+
+
