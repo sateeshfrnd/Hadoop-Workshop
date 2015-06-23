@@ -1,0 +1,17 @@
+
+cherry-pick
+===========
+git checkout master
+git cherry-pick 62ecb3
+Ref: https://ariejan.net/2010/06/10/cherry-picking-specific-commits-from-another-branch/
+
+show
+====
+git show ef3f10
+git diff-tree --no-commit-id --name-only -r ef3f10
+git show --pretty="format:" --name-only ef3f10
+
+The --no-commit-id suppresses the commit ID output.
+The --pretty argument specifies an empty format string to avoid the cruft at the beginning.
+The --name-only argument shows only the file names that were affected (Thanks Hank).
+The -r argument is to recurse into sub-trees
