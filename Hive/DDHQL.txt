@@ -1,0 +1,39 @@
+DataBases
+=========
+hive> CREATE DATABASE workshop;
+
+hive> CREATE DATABASE IF NOT EXISTS workshop;
+
+hive> SHOW DATABASES;
+
+hive> show databases like 'w.*';
+
+hive> DESCRIBE DATABASE workshop;
+
+hive> CREATE DATABASE hive_workshop COMMENT 'workshop on hive';
+
+hive> CREATE DATABASE workshop1 WITH DBPROPERTIES ('creator' = 'Kumar', 'date' = '2015-04-19');
+
+hive> DESCRIBE DATABASE workshop1;
+
+hive> DESCRIBE DATABASE EXTENDED workshop1;
+
+You can override this default location for the new directory as shown in this example:
+--------------------------------------------------------------------------------------
+hive> CREATE DATABASE hive-workshop LOCATION '/user/hive/my-workshop';
+
+Delete DataBase
+---------------
+hive> DROP DATABASE IF EXISTS hive_workshop;
+Note: By default,hive will not allow you to drop a db,if it contains tables. You can either drop the tables first or append the CASCADE keyword to command.
+
+hive> DROP DATABASE IF EXISTS hive_workshop CASCADE;
+
+ALTER DATABASE
+--------------
+hive> ALTER DATABASE workshop1 SET DBPROPERTIES ('edited-by' = 'Teja');
+You can set key-value pairs in the DBPROPERTIES associated with a database using the ALTER DATABASE command. No other metadata about the database can be changed, including its name and directory location:
+There is no way to delete or “unset” a DBPROPERTY.
+
+
+
