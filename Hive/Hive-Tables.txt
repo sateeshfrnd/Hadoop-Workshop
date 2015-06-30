@@ -1,0 +1,52 @@
+CREATE TABLE 
+-------------
+CREATE TABLE sample(key string,value string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
+
+1001, Kumar
+1002, Teja
+1003, Ramya
+
+LOAD DATA FROM LOCAL
+--------------------
+LOAD DATA LOCAL INPATH '/home/cloudera/hadoop-workshop/hive/sample-data.txt' INTO TABLE sample;
+
+LOAD DATA FROM HDFS
+--------------------
+LOAD DATA INPATH '/home/cloudera/hadoop-workshop/hive/sample-data.txt' INTO TABLE sample;
+Note: If load hdfs file then it move to hive table.
+
+QUERY DATA
+-----------
+SELECT * FROM sample; [It doesn't launch any Job]
+SELECT MAX(key) FROM sample; [It launches both Mapper Reducer]
+SELECT key from sample; [It launches map only Job]
+
+STORE QUERY RESULT DATA
+-----------------------
+1. Insert the results into local directory
+INSERT OVERWRITE LOCAL DIRECTORY '/home/cloudera/hadoop-workshop/hive/sample2' SELECT * from sample LIMIT 4;
+2. Insert the results into hdfs directory
+INSERT OVERWRITE DIRECTORY '/user/hive/sample2' SELECT * from sample LIMIT 4;
+
+SHOW TABLES
+-----------
+hive (workshop)> SHOW TABLES;
+If we aren’t in the same database, we can still list the tables in that database:
+hive>SHOW TABLES IN workshop;
+
+TABLE DETAILS
+--------------
+DESCRIBE EXTENDED sample;
+DESCRIBE EXTENDED workshop.sample;
+
+Replacing EXTENDED with FORMATTED provides more readable
+DESCRIBE FORMATTED sample;
+
+
+EXTERNAL TABLES
+===============
+CREATE EXTERNAL TABLE sample_external(key int, value string)ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE LOCATION '/user/hive/sample-inputs';
+
+[Note: The above location should be directory that having the hive table.]
+
+SELECT * FROM sample_external;
