@@ -30,6 +30,10 @@ That will delete the newfeature branch on the origin remote.
 git branch -d newfeature.
 Delete the branch locally
 
+Amending the commit message
+===========================
+git commit --amend
+
 
 Referances
 ==========
