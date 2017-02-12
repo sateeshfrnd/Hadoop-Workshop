@@ -26,7 +26,11 @@ Step 3 :SSH Configuration
 - Check is installed or not 
 	$ssh localhost 
 	If not installed – Error msg:  ssh: connect to host localhost port 22: Connection refused.
-	
+- Setup SSH
+	$ ssh-keygen -t rsa 
+	$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys 
+	$ chmod 0600 ~/.ssh/authorized_keys 
+
 Step 4: Set Classpath 
 =====================
 - Set Classpath for JAVA, run below command or add below statement in .bashrc to set classpath for JAVA
@@ -121,6 +125,8 @@ Start HDFS daemons
 	$HADOOP_HOME/sbin/hadoop-daemon.sh start namenode
 - Start the datanode daemon 
 	$HADOOP_HOME/sbin/hadoop-daemon.sh start datanode 
+- Start the secondary namenode daemon 
+	$HADOOP_HOME/sbin/hadoop-daemon.sh start secondarynamenode
 - Start all HDFS services cluster-wide
 	$HADOOP_HOME/sbin/start-dfs.sh 
 
