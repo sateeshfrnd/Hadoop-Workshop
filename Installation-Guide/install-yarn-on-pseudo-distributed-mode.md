@@ -1,13 +1,21 @@
-# Step 1: Download JAVA_HOME 
+# Step 1: Download and install JAVA 
 You can verify java installation using the following command 
+```
 java –version 
+```
 On executing this command, you should see output similar to the following: 
 java version "1.7.0_51" OpenJDK Runtime Environment (IcedTea 2.4.6) (7u51-2.4.6-1ubuntu4) OpenJDK 64-Bit Server VM (build 24.51-b03, mixed mode)
 
 If java is not installed, Use the below command to begin the installation of Java 
-sudo apt-get install openjdk-7-jdk
-
-This will install the full JDK under **/usr/lib/jvm/java-7-subdirectory**. (For Hadoop 2, the recommended version of Java can be found at [HadoopJavaVersions](http://wiki.apache.org/hadoop/HadoopJavaVersionsi) )
+Java8
+```
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+sudo apt-get install oracle-java8-set-default
+java -version
+```
+This will install the full JDK under **/usr/lib/jvm/java-8-subdirectory**. (For Hadoop 2, the recommended version of Java can be found at [HadoopJavaVersions](http://wiki.apache.org/hadoop/HadoopJavaVersionsi) )
 
 
 
