@@ -4,7 +4,11 @@ You can verify java installation using the following command
 java –version 
 ```
 On executing this command, you should see output similar to the following: 
-java version "1.7.0_51" OpenJDK Runtime Environment (IcedTea 2.4.6) (7u51-2.4.6-1ubuntu4) OpenJDK 64-Bit Server VM (build 24.51-b03, mixed mode)
+```
+java version "1.8.0_144"
+Java(TM) SE Runtime Environment (build 1.8.0_144-b01)
+Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)
+```
 
 If java is not installed, Use the below command to begin the installation of Java 
 Java8
