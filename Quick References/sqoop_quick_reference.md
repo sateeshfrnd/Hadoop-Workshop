@@ -145,6 +145,15 @@ sqoop job --show <job_name>
 sqoop job --exec <job_name>  
 ```
        
+### Sqoop Netezza
+- Query Netezza Table
+```
+sqoop-eval --connect jdbc:netezza://${NZ_HOST}/${NZ_DB}?schema=${NZ_SCHEMA}" --username "${NZ_USER}"  --password "${NZ_PWD}" -e "select COLUMN_NAME from COLUMNS where TABLE_NAME='${NZ_TABLE}' and TABLE_SCHEMA='${NZ_SCHEMA}'"
+```
+- Import Netezza table
+```
+sqoop import --connect jdbc:netezza://${NZ_HOST}/${NZ_DB}?schema=${NZ_SCHEMA}" --username "${NZ_USER}"  --password "${NZ_PWD}" --m ${SQOOP_NUM_MAPPERS} --fields-terminated-by ${SQOOP_DELIMITER} --append  --target-dir ${SQOOP_TARGET_DIR}/${HIVE_TABLE_NM} --options-file "${HIVE_TBL}_CONFIG.cfg"
+```
        
        
        
