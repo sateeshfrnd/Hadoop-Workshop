@@ -1,0 +1,14 @@
+### MySQL JDBC Driver
+http://www.mysql.com/downloads/connector/j/5.1.html
+
+## Oracle JDBC Driver
+http://www.oracle.com/technetwork/database/enterprise-edition/jdbc-112010-090769.html
+
+## Microsoft SQL Server JDBC Driver
+http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&id=11774
+
+## PostgreSQL JDBC Driver
+http://jdbc.postgresql.org/download.html
+
+## Teradata
+https://downloads.teradata.com/download/connectivity/jdbc-driver
