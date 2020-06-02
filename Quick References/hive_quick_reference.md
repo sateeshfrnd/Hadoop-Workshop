@@ -14,3 +14,19 @@ For Example:
 -- This will return 1800 (seconds). Unix_timestamp converts string dates into BIGINTs. 
 UNIX_TIMESTAMP('2018-02-05 10:00:00') - UNIX_TIMESTAMP('2018-12-02 10:30:00') AS time_diff 
 ```
+### Get previous date for the given date
+*date_sub* will give the previous day, but if given date in 'yyyy-MM-dd' format.
+Syntax:
+```
+date_sub(String date, Int days)
+```
+
+If the given date is in different format, then need to first convert your current date format into yyyy-MM-dd format.
+```
+SELECT date_sub(from_unixtime(unix_timestamp('20190902','yyyyMMdd'),'yyyy-MM-dd'),1) as previous_day;
+```
+
+If you need the date format as yyyyMMdd, you can apply regex_replace function to remove the '-', as below:
+```
+select regexp_replace(date_sub(from_unixtime(unix_timestamp('20190902','yyyyMMdd'),'yyyy-MM-dd'),1),'-','') as previous_day_yyyymmdd;
+```
