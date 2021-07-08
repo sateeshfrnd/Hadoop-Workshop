@@ -1,4 +1,4 @@
-Print Database name hive prompt
+### Print Database name hive prompt
 -------------------------------
 hive> set hive.cli.print.current.db=true;
 
